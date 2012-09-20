@@ -1,0 +1,4 @@
+This folder is the default storage location for parameter files generated
+locally with the parametersform.py script.  The vpgParameters module
+also creates a 'current' parameters file in this folder, which allows
+parameters to be reloaded automatically when the region server restarts.

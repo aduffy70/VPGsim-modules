@@ -1,0 +1,107 @@
+From 713af2a3be34a81ae0894cd3a94ed0a45b062156 Mon Sep 17 00:00:00 2001
+From: aduffy70 <aduffy70@gmail.com>
+Date: Thu, 6 Sep 2012 13:48:11 -0600
+Subject: [PATCH 2/3] These are the new files that must be added to the core opensim folders for vpgsim
+
+---
+ .../Framework/Interfaces/IvpgParametersModule.cs   |   41 ++++++++++++++++++++
+ .../Region/Framework/Interfaces/IvpgSoilModule.cs  |   39 +++++++++++++++++++
+ 2 files changed, 80 insertions(+), 0 deletions(-)
+ create mode 100644 OpenSim/Region/Framework/Interfaces/IvpgParametersModule.cs
+ create mode 100644 OpenSim/Region/Framework/Interfaces/IvpgSoilModule.cs
+
+diff --git a/OpenSim/Region/Framework/Interfaces/IvpgParametersModule.cs b/OpenSim/Region/Framework/Interfaces/IvpgParametersModule.cs
+new file mode 100644
+index 0000000..68312f6
+--- /dev/null
++++ b/OpenSim/Region/Framework/Interfaces/IvpgParametersModule.cs
+@@ -0,0 +1,41 @@
++/*
++ * Copyright (c) Contributors, VPGsim Project http://fernseed.usu.edu/
++ * See CONTRIBUTORS.TXT for a full list of copyright holders.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions are met:
++ *     * Redistributions of source code must retain the above copyright
++ *       notice, this list of conditions and the following disclaimer.
++ *     * Redistributions in binary form must reproduce the above copyright
++ *       notice, this list of conditions and the following disclaimer in the
++ *       documentation and/or other materials provided with the distribution.
++ *     * Neither the name of the VPGsim Project nor the
++ *       names of its contributors may be used to endorse or promote products
++ *       derived from this software without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE DEVELOPERS ``AS IS'' AND ANY
++ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
++ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++ * DISCLAIMED. IN NO EVENT SHALL THE CONTRIBUTORS BE LIABLE FOR ANY
++ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
++ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
++ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
++ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
++ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++ */
++
++using System.Collections.Generic;
++using OpenMetaverse;
++
++namespace OpenSim.Region.Framework.Interfaces
++{
++    public interface IvpgParametersModule : IRegionModule
++    {
++        /// <summary>
++        /// Retrieves the version ID and user adjustable parameters for the vpgsim objects
++        /// </summary>
++        string GetVersionID();
++        List<float> GetParameterList(string lifestage, int phenotype);
++    }
++}
+diff --git a/OpenSim/Region/Framework/Interfaces/IvpgSoilModule.cs b/OpenSim/Region/Framework/Interfaces/IvpgSoilModule.cs
+new file mode 100644
+index 0000000..dd07512
+--- /dev/null
++++ b/OpenSim/Region/Framework/Interfaces/IvpgSoilModule.cs
+@@ -0,0 +1,39 @@
++/*
++ * Copyright (c) Contributors, VPGsim Project http://fernseed.usu.edu/
++ * See CONTRIBUTORS.TXT for a full list of copyright holders.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions are met:
++ *     * Redistributions of source code must retain the above copyright
++ *       notice, this list of conditions and the following disclaimer.
++ *     * Redistributions in binary form must reproduce the above copyright
++ *       notice, this list of conditions and the following disclaimer in the
++ *       documentation and/or other materials provided with the distribution.
++ *     * Neither the name of the VPGsim Project nor the
++ *       names of its contributors may be used to endorse or promote products
++ *       derived from this software without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE DEVELOPERS ``AS IS'' AND ANY
++ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
++ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++ * DISCLAIMED. IN NO EVENT SHALL THE CONTRIBUTORS BE LIABLE FOR ANY
++ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
++ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
++ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
++ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
++ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++ */
++
++using OpenMetaverse;
++
++namespace OpenSim.Region.Framework.Interfaces
++{
++    public interface IvpgSoilModule : IRegionModule
++    {
++        /// <summary>
++        /// Retrieves the soil type at the given region coordinates
++        /// </summary>
++        Vector3 SoilType(int x, int y, int z);
++    }
++}
+-- 
+1.7.1
+

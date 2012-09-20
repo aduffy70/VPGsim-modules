@@ -1,0 +1,26 @@
+# demographicsplotter.r
+# VPGsim Project license applies (http://fernseed.usu.edu)
+
+# This script produces 3 plots when called by the vpgSummary module.
+
+args = commandArgs()
+jpeg(filename=paste(c(args[7],"demographicsplot.jpg"), collapse = ""),width=1024,height=512,pointsize=12,quality=80,bg="white")
+a <- read.csv(paste(c(args[8],"demographics.log"), collapse = ""), header=FALSE)
+matplot(a[1],a[2:4],type="o",xlab="Time Interval",ylab="# of Individuals",main="Population Demographics",cex.main= 2.0,col=c("black", "orange", "blue"),pch=c(16,6,9),lwd=1.5,cex=c(0.5,0.5,0.5),xlim=c(0,max(a[1])))
+legend(0,max(a[2:4]-1),c("Spores", "Gametophytes", "Sporophytes"),pch=c(16,6,9),col=c("black", "orange", "blue"),pt.cex=c(1.5,1.5,1.5))
+mtext(date(),side=3,adj=1,line=2)
+axis(4)
+dev.off()
+jpeg(filename=paste(c(args[7],"allelefrequencyplot.jpg"), collapse = ""),width=1024,height=512,points=12,quality=80,bg="white")
+b <- read.csv(paste(c(args[8],"hwe.log"), collapse = ""), header=FALSE)
+matplot(b[1],b[c(2,4,6,8,10)],type="b",xlab="Time Interval",ylab="Frequency",main="Sporophyte Allele Frequencies",cex.main=2,lwd=2,ylim=(c(0,1)),xlim=c(0,max(b[1])),pch=c(1,2,3,4,5),cex=c(0.5, 0.5, 0.5, 0.5, 0.5),col=c("black", "red", "orange", "blue", "cyan"))
+legend(0,max(0.95),c("Locus #5", "Locus #4", "Locus #3", "Locus #2", "Locus #1"),pch=c(1,2,3,4,5),col=c("black", "red", "orange", "blue", "cyan"))
+mtext(date(),side=3,adj=1,line=2)
+axis(4)
+dev.off()
+jpeg(filename=paste(c(args[7],"heterozygosityplot.jpg"), collapse = ""),width=1024,height=512,pointsize=12,quality=80,bg="white")
+matplot(b[1],b[c(3,5,7,9,11)],type="b",xlab="Time Interval",ylab="Frequency",main="Observed Heterozygosity",cex.main=2,lwd=2,ylim=(c(0,1)),xlim=c(0,max(b[1])),pch=c(1,2,3,4,5),cex=c(0.5, 0.5, 0.5, 0.5, 0.5),col=c("black", "red", "orange", "blue", "cyan"))
+legend(0,max(0.95),c("Locus #5", "Locus #4", "Locus #3", "Locus #2", "Locus #1"),pch=c(1,2,3,4,5),col=c("black", "red", "orange", "blue", "cyan"))
+mtext(date(),side=3,adj=1,line=2)
+axis(4)
+dev.off()

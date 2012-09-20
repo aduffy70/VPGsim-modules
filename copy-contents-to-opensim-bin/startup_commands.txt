@@ -1,0 +1,2 @@
+load oar addon-modules/vpgsim/oars/vpgsim_default_content.oar
+

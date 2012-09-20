@@ -1,0 +1,26 @@
+[Startup]
+    MinimumTimeBeforePersistenceConsidered = 1200
+    MaximumTimeBeforePersistenceConsidered = 7200
+
+[Wind]
+    enabled = true
+    wind_update_rate = 150
+    wind_plugin = SimpleRandomWind
+    strength = 1.0
+
+[Cloud]
+    enabled = true
+    density = 1.0
+    cloud_update_rate = 1000
+
+[XEngine]
+    MaxThreads = 1000
+    AppDomainLoading = false
+    AllowMODFunctions = true
+    AllowOSFunctions = true
+    OSFunctionThreatLevel = Low
+    SaveInterval = 1200
+    MaintenanceInterval = 60
+    ScriptDelayFactor = 0.0
+    ScriptDistanceLimitFactor = 35.0
+    SensorMaxResults = 32

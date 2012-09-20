@@ -1,0 +1,110 @@
+[vpgParameters]
+    enabled = true
+
+    ;The parameter files can be read from a local folder on this machine or
+    ;from a web url.
+    ;To use local storage, set the path to the local folder where parameter
+    ;files are stored.
+    ;local_parameters = true
+    ;parameter_path = "addon-modules/vpgsim-configs/parameters/"
+    ;To use a web url, set the base url where parameter files are located
+    ;(default uses http://fernseed.usu.edu/parameter-adjustment-form):
+    local_parameters = false
+    parameter_path = "http://fernseed.usu.edu/fs-parameters/"
+
+    ;Path to the local file to store the current parameters.  This must be a
+    ;local file - even if local_parameters is 'false' and the parameter_path
+    ;above is a url.  The file will be created automatically if it does
+    ;not exist.
+    current_file = "addon-modules/vpgsim-configs/parameters/current"
+
+    ;Channel for chat commands
+    listen_channel = 15
+
+[vpgSummary]
+    enabled = true
+
+    ;Time in seconds between summary cycles. Use a time that divides cleanly
+    ;into 3600 seconds (eg. 120, 180, 240, 300, 360, 600, 900, etc).  Other
+    ;times may cause problems for multiple opensim instances.
+    cycle_time = 300
+
+    ;Time in seconds to wait for other opensim instances to provide their
+    ;summary data.  With large populations or slow hardware longer delays may
+    ;be required.  This value must be smaller than cycle_time.
+    delay_time = 30
+
+    ;Path to the folder where the history log files are stored.  This doesn't
+    ;have to be a web accessible folder but it makes it easy to access the
+    ;data for use in other analysis packages.
+    log_path = "addon-modules/vpgsim-configs/output/"
+
+    ;Should this opensim instance generate population summary plots from
+    ;the logged data?
+    generate_plots = true
+
+    ;Path to the folder where demographicsplotter.r is stored.
+    script_path = "addon-modules/vpgsim-configs/scripts"
+
+    ;Path to the folder where the history plots will be stored.  This doesn't
+    ;have to be a web accessible folder but it makes it easy to view the plots
+    ;online or display them in opensim with an lsl script.
+    plot_path = "addon-modules/vpgsim-configs/output/"
+
+    ;A tag to identify the output files.  If multiple opensim instances are
+    ;running on the same machine it is important that each instance has a
+    ;unique tag.
+    instance_tag = "myregion"
+
+    ;Channel for chat commands
+    listen_channel = 3
+
+    ;Multiple opensim instances need to communicate via an IRC bridge.  These
+    ;channels must match the settings in the [IRC] section of OpenSim.ini.
+    irc_in_channel = 2226;
+    irc_out_channel = 2225;
+
+[vpgVisualization]
+    enabled = true
+
+    ;Channel for chat commands
+    listen_channel = 5
+
+[vpgSoil]
+    enabled = true
+
+    ;The soil files can be read from a local folder on this machine or from a
+    ;web url. The soildefine.py script (in the scripts folder) can be used to
+    ;generate new soil files.
+    local_files = true
+
+    ;Paths to the soil files located locally or on the web:
+    soil_x_path = "addon-modules/vpgsim-configs/soil/DefaultSoilX.txt"
+    soil_y_path = "addon-modules/vpgsim-configs/soil/DefaultSoilY.txt"
+    soil_z_path = "addon-modules/vpgsim-configs/soil/DefaultSoilZ.txt"
+
+[vpgManager]
+    enabled = true
+    listen_channel = 4
+
+    ;Maximum size of the population (to prevent a runaway population from
+    ;taking down the server - but how will you know how big is too big
+    ;until it has happened once?)
+    population_limit = 10000
+
+    ;Maximum number of planting failures (due to the randomly selected location
+    ;being underwater) that are allowed before we give up.  This keeps the
+    ;module from getting caught in an infinite loop if there is little
+    ;or no dry land in the specified planting range.
+    max_failures = 25000
+
+    ;Path to the local folder where oar files will be stored.
+    oar_path = "addon-modules/vpgsim-configs/oars"
+
+[vpgTerrain]
+    enabled = true
+    chat_channel = 18
+
+    ;Module is hardcoded to find terrain files in bin/terrain
+    ;...need to make that configurable...
+
